@@ -14,7 +14,7 @@ import org.springframework.web.servlet.mvc.condition.ProducesRequestCondition;
 public class ProductController {
     @Autowired private ProductService productService;
 
-    @PostMapping("/product")
+    @PostMapping("/products")
     public ResponseEntity<?> createProduct(@RequestBody Product product) {
         productService.createProduct(product);
         try {
@@ -34,7 +34,7 @@ public class ProductController {
         }
     }
 
-    @GetMapping("/product/{id}")
+    @GetMapping("/products/{id}")
     public ResponseEntity<?> getProductById(@PathVariable("id") Long id) {
         try {
             return new ResponseEntity<>(productService.getProductById(id), HttpStatus.FOUND);
@@ -43,7 +43,7 @@ public class ProductController {
         }
     }
 
-    @PutMapping("/product")
+    @PutMapping("/products")
     public ResponseEntity<?> updateProductState(@RequestBody UpdateProductStateRequest product) {
         try {
             productService.updateProductState(product);
